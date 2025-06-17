@@ -16,6 +16,7 @@ import MenuOverlay from "./MenuOverlay";
 import Navigation from "../Navigation/Navigation";
 import HeroSection from "./HeroSection";
 import ProjectsSection from "./ProjectsSection";
+import Footer from "../Footer/Footer";
 
 // Google Fonts Exo 2 추가
 const ExoFont = () => (
@@ -201,6 +202,9 @@ const Portfolio = () => {
           projects={projects}
           isDarkMode={isDarkMode}
         />
+        <div className="h-[250px]" />
+
+        <Footer />
       </div>
     </>
   );

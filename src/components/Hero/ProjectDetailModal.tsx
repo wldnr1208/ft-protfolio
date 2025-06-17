@@ -863,7 +863,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                   </motion.div>
                 </>
               )}
-              {!isBauschProject && !isLenslyProject && (
+              {!isBauschProject && !isLenslyProject && !isBauschAppProject && (
                 /* 다른 프로젝트의 기본 정보 */
                 <motion.div
                   initial={{ y: 20, opacity: 0 }}

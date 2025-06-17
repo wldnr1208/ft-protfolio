@@ -95,16 +95,22 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                         <img
                           src={project.image}
                           alt={project.title}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover cursor-pointer relative z-10"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleProjectClick(project);
+                          }}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                        {/* 호버 시 나타나는 오버레이 */}
+                        {/* 이 오버레이는 클릭을 막을 수 있으니 pointer-events 없애거나 z-index 낮춤 */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0" />
+
+                        {/* 버튼용 오버레이는 유지 */}
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto">
                           <motion.div
                             initial={{ scale: 0 }}
                             whileHover={{ scale: 1 }}
-                            className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer"
+                            className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer z-20"
                             onClick={(e) => {
                               e.stopPropagation();
                               console.log("이미지 클릭됨");

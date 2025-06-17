@@ -25,9 +25,11 @@ const Navigation: React.FC<NavigationProps> = ({
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-3"
         >
-          <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-            <span className="text-white font-bold text-lg">*</span>
-          </div>
+          <img
+            src={isDarkMode ? "/assets/logo-dark.png" : "/assets/logo.png"}
+            alt="Logo"
+            className="w-20 h-20 object-contain"
+          />
         </motion.div>
 
         <div className="flex items-center gap-6">

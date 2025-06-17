@@ -1,5 +1,5 @@
-import React from "react";
-import { motion, MotionValue } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, MotionValue, useInView } from "framer-motion";
 
 // HeroSection Props
 export interface HeroSectionProps {
@@ -13,7 +13,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   heroY,
   heroOpacity,
 }) => {
-  // 컨테이너 & 글자 애니메이션 variants
+  const localRef = useRef(null);
+  const isInView = useInView(localRef, { once: false, amount: 0.4 });
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -63,10 +65,15 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
       id="home"
     >
-      <div className="max-w-6xl mx-auto px-8 text-center relative z-10">
+      <div
+        className="max-w-6xl mx-auto px-8 text-center relative z-10"
+        ref={localRef}
+      >
         <motion.div
+          key={isInView ? "visible" : "hidden"}
           initial="hidden"
-          animate="visible"
+          animate={isInView ? "visible" : "hidden"}
+          variants={containerVariants}
           className="relative space-y-6"
         >
           {/* 노트북 아이콘 */}
@@ -87,40 +94,23 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             💻
           </motion.div>
 
-          {/* INTUITIVE UI */}
+          {/* INTERACTION */}
           <motion.h1
             className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none"
             variants={containerVariants}
-            initial="hidden"
-            animate="visible"
           >
-            {splitTextToLetters("INTUITIVE ")}
-            <motion.span
-              className="inline-block"
-              style={{
-                backgroundImage:
-                  "linear-gradient(90deg, #8b5cf6, #ec4899, #8b5cf6)",
-                backgroundSize: "200% auto",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                animation: "gradientTextMove 5s linear infinite",
-              }}
-            >
-              {splitTextToLetters("UI")}
-            </motion.span>
+            {splitTextToLetters("INTERACTION")}
           </motion.h1>
 
-          {/* USER ENGAGEMENT */}
+          {/* ACCESSIBILITY */}
           <motion.h2
             className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none"
             variants={containerVariants}
-            initial="hidden"
-            animate="visible"
           >
-            {splitTextToLetters("USER ENGAGEMENT")}
+            {splitTextToLetters("ACCESSIBILITY")}
           </motion.h2>
 
-          {/* PERFORMANCE + 아이콘 */}
+          {/* RESPONSIVENESS + 아이콘 */}
           <div className="relative inline-block">
             <motion.div
               className="absolute -right-20 top-1/2 -translate-y-1/2 text-5xl"
@@ -141,21 +131,17 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             <motion.h3
               className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none"
               variants={containerVariants}
-              initial="hidden"
-              animate="visible"
             >
-              {splitTextToLetters("PERFORMANCE")}
+              {splitTextToLetters("RESPONSIVENESS")}
             </motion.h3>
           </div>
 
-          {/* IMPROVEMENT */}
+          {/* SCALABILITY */}
           <motion.h4
             className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none"
             variants={containerVariants}
-            initial="hidden"
-            animate="visible"
           >
-            {splitTextToLetters("IMPROVEMENT")}
+            {splitTextToLetters("SCALABILITY")}
           </motion.h4>
 
           {/* 설명 텍스트 */}
