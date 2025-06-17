@@ -17,6 +17,7 @@ import Navigation from "../Navigation/Navigation";
 import HeroSection from "./HeroSection";
 import ProjectsSection from "./ProjectsSection";
 import Footer from "../Footer/Footer";
+import AboutSection from "../AboutSection/AboutSection";
 
 // Google Fonts Exo 2 추가
 const ExoFont = () => (
@@ -193,6 +194,7 @@ const Portfolio = () => {
           heroY={heroY}
           heroOpacity={heroOpacity}
         />
+        <AboutSection />
 
         {/* Projects Section */}
         <ProjectsSection

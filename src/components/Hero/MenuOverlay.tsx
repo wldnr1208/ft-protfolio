@@ -113,25 +113,12 @@ const MenuOverlay: React.FC<MenuOverlayProps> = ({
               isDarkMode ? "text-white" : "text-black"
             }`}
           >
-            <div className="mb-8">
-              <div className="w-72 h-48 bg-gray-300 dark:bg-gray-700 rounded-lg mb-4" />
-              <p className="text-sm font-medium mb-1">ABOUT ME</p>
-            </div>
             <div className="space-y-2 text-sm">
               <p className="font-medium">EMAIL</p>
-              <p>hello@portfolio.com</p>
+              <p>wldnr1208@naver.com</p>
               <p className="font-medium mt-4">BLOG</p>
-              <p>blog.portfolio.com</p>
+              <p>https://wldnr1208.github.io/jw1208.github.io/</p>
             </div>
-          </div>
-
-          <div
-            className={`absolute bottom-16 left-16 ${
-              isDarkMode ? "text-white" : "text-black"
-            }`}
-          >
-            <p className="text-sm font-medium">CONTACT</p>
-            <div className="text-3xl font-black mt-2">*</div>
           </div>
         </motion.div>
       )}
