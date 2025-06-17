@@ -1,5 +1,3 @@
-"use client";
-
 import { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
@@ -14,16 +12,16 @@ function ParticleField({ isDarkMode }: ParticleFieldProps) {
   const ref = useRef<THREE.Points>(null!);
 
   const { positions, colors } = useMemo(() => {
-    const count = isDarkMode ? 5000 : 3000; // 훨씬 더 많은 파티클
+    const count = isDarkMode ? 5000 : 3000;
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
 
     for (let i = 0; i < count; i++) {
       if (isDarkMode) {
         // 다크모드: 우주의 별들 - 더 균등한 분포
-        positions[i * 3] = (Math.random() - 0.5) * 120; // 더 넓은 X 범위
-        positions[i * 3 + 1] = (Math.random() - 0.5) * 100; // 더 넓은 Y 범위
-        positions[i * 3 + 2] = (Math.random() - 0.5) * 100; // 더 넓은 Z 범위
+        positions[i * 3] = (Math.random() - 0.5) * 120;
+        positions[i * 3 + 1] = (Math.random() - 0.5) * 100;
+        positions[i * 3 + 2] = (Math.random() - 0.5) * 100;
 
         // 흰색/노란빛 별들
         const brightness = 0.7 + Math.random() * 0.3;
@@ -47,9 +45,9 @@ function ParticleField({ isDarkMode }: ParticleFieldProps) {
         }
       } else {
         // 라이트모드: 더 균등한 박스 분포
-        positions[i * 3] = (Math.random() - 0.5) * 60; // 균등한 X 분포
-        positions[i * 3 + 1] = (Math.random() - 0.5) * 50; // 균등한 Y 분포
-        positions[i * 3 + 2] = (Math.random() - 0.5) * 50; // 균등한 Z 분포
+        positions[i * 3] = (Math.random() - 0.5) * 60;
+        positions[i * 3 + 1] = (Math.random() - 0.5) * 50;
+        positions[i * 3 + 2] = (Math.random() - 0.5) * 50;
 
         // 부드러운 블루/퍼플 그라디언트
         const distanceFromCenter = Math.sqrt(
@@ -106,34 +104,34 @@ function ParticleField({ isDarkMode }: ParticleFieldProps) {
   useFrame((state) => {
     if (ref.current) {
       if (isDarkMode) {
-        // 다크모드: 천천히 회전하는 우주
-        ref.current.rotation.y = state.clock.elapsedTime * 0.008;
+        // 다크모드: 매우 천천히 회전하는 우주 (속도를 1/4로 줄임)
+        ref.current.rotation.y = state.clock.elapsedTime * 0.001; // 0.008 → 0.002
         ref.current.rotation.x =
-          Math.sin(state.clock.elapsedTime * 0.003) * 0.02;
+          Math.sin(state.clock.elapsedTime * 0.001) * 0.01; // 0.003 → 0.001
       } else {
-        // 라이트모드: 부드러운 파티클 움직임
+        // 라이트모드: 부드럽고 느린 파티클 움직임 (속도를 1/3로 줄임)
         const positions = ref.current.geometry.attributes.position
           .array as Float32Array;
 
-        ref.current.rotation.y = state.clock.elapsedTime * 0.025;
+        ref.current.rotation.y = state.clock.elapsedTime * 0.002; // 0.025 → 0.008
 
-        // 파티클 웨이브 애니메이션
+        // 파티클 웨이브 애니메이션 - 더 느리고 부드럽게
         for (let i = 0; i < positions.length; i += 3) {
           const time = state.clock.elapsedTime;
           const index = i / 3;
 
-          positions[i] += Math.sin(time * 0.4 + index * 0.008) * 0.0008;
-          positions[i + 1] += Math.cos(time * 0.3 + index * 0.015) * 0.0008;
-          positions[i + 2] += Math.sin(time * 0.35 + index * 0.012) * 0.0008;
+          positions[i] += Math.sin(time * 0.1 + index * 0.008) * 0.0003; // 속도와 움직임 감소
+          positions[i + 1] += Math.cos(time * 0.08 + index * 0.015) * 0.0003;
+          positions[i + 2] += Math.sin(time * 0.09 + index * 0.012) * 0.0003;
         }
 
         ref.current.geometry.attributes.position.needsUpdate = true;
       }
 
-      // 마우스 인터랙션
+      // 마우스 인터랙션 - 더 미묘하게
       const mouse = state.mouse;
-      ref.current.rotation.x += mouse.y * 0.015;
-      ref.current.rotation.z += mouse.x * 0.008;
+      ref.current.rotation.x += mouse.y * 0.005; // 0.015 → 0.005
+      ref.current.rotation.z += mouse.x * 0.003; // 0.008 → 0.003
     }
   });
 
