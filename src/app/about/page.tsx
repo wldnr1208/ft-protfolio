@@ -51,9 +51,10 @@ const AboutDetailPage = () => {
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
         setIsHovering={setIsHovering}
+        showMenuButton={false}
       />
 
-      <main className="w-full max-w-5xl px-6 md:px-8 py-24 pt-32">
+      <main className="w-full max-w-5xl px-6 md:px-8 py-24 pt-52">
         {/* About Me 헤더 섹션 */}
         <div
           id="header"
@@ -64,13 +65,7 @@ const AboutDetailPage = () => {
               : "opacity-0 translate-y-10"
           }`}
         >
-          <div className="flex items-center justify-center mb-6">
-            <div
-              className={`w-2 h-2 rounded-full mr-4 transition-all duration-700 ${
-                isDarkMode ? "bg-white" : "bg-black"
-              } ${isVisible("header") ? "scale-100 animate-pulse" : "scale-0"}`}
-            ></div>
-          </div>
+          <div className="flex items-center justify-center mb-6"></div>
           <h1
             className={`text-4xl md:text-5xl font-bold mb-8 transition-all duration-800 delay-200 ${
               isVisible("header")
@@ -78,7 +73,7 @@ const AboutDetailPage = () => {
                 : "opacity-0 -translate-x-10"
             }`}
           >
-            About Me →
+            About Me
           </h1>
         </div>
         <div

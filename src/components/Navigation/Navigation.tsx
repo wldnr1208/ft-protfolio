@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 // Navigation Props
 export interface NavigationProps {
@@ -8,14 +9,15 @@ export interface NavigationProps {
   isMenuOpen: boolean;
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setIsHovering: React.Dispatch<React.SetStateAction<boolean>>;
+  showMenuButton?: boolean;
 }
-
 const Navigation: React.FC<NavigationProps> = ({
   isDarkMode,
   setIsDarkMode,
   isMenuOpen,
   setIsMenuOpen,
   setIsHovering,
+  showMenuButton = true,
 }) => {
   return (
     <nav className="fixed top-0 w-full z-40 backdrop-blur-md bg-white/10 dark:bg-black/10">
@@ -25,11 +27,13 @@ const Navigation: React.FC<NavigationProps> = ({
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-3"
         >
-          <img
-            src={isDarkMode ? "/assets/logo-dark.png" : "/assets/logo.png"}
-            alt="Logo"
-            className="w-20 h-20 object-contain"
-          />
+          <Link href="/">
+            <img
+              src={isDarkMode ? "/assets/logo-dark.png" : "/assets/logo.png"}
+              alt="Logo"
+              className="w-20 h-20 object-contain cursor-pointer"
+            />
+          </Link>
         </motion.div>
 
         <div className="flex items-center gap-6">
@@ -43,36 +47,39 @@ const Navigation: React.FC<NavigationProps> = ({
           >
             {isDarkMode ? "☀️" : "🌙"}
           </motion.button>
-
-          <motion.button
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="relative w-8 h-8 flex flex-col justify-center items-center gap-1.5"
-            onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => setIsHovering(false)}
-          >
-            <motion.span
-              className={`w-6 h-0.5 ${
-                isDarkMode ? "bg-white" : "bg-gray-900"
-              } transition-all`}
-              animate={isMenuOpen ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }}
-            />
-            <motion.span
-              className={`w-6 h-0.5 ${
-                isDarkMode ? "bg-white" : "bg-gray-900"
-              } transition-all`}
-              animate={isMenuOpen ? { opacity: 0 } : { opacity: 1 }}
-            />
-            <motion.span
-              className={`w-6 h-0.5 ${
-                isDarkMode ? "bg-white" : "bg-gray-900"
-              } transition-all`}
-              animate={
-                isMenuOpen ? { rotate: -45, y: -4 } : { rotate: 0, y: 0 }
-              }
-            />
-          </motion.button>
+          {showMenuButton && (
+            <motion.button
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="relative w-8 h-8 flex flex-col justify-center items-center gap-1.5"
+              onMouseEnter={() => setIsHovering(true)}
+              onMouseLeave={() => setIsHovering(false)}
+            >
+              <motion.span
+                className={`w-6 h-0.5 ${
+                  isDarkMode ? "bg-white" : "bg-gray-900"
+                } transition-all`}
+                animate={
+                  isMenuOpen ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }
+                }
+              />
+              <motion.span
+                className={`w-6 h-0.5 ${
+                  isDarkMode ? "bg-white" : "bg-gray-900"
+                } transition-all`}
+                animate={isMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+              />
+              <motion.span
+                className={`w-6 h-0.5 ${
+                  isDarkMode ? "bg-white" : "bg-gray-900"
+                } transition-all`}
+                animate={
+                  isMenuOpen ? { rotate: -45, y: -4 } : { rotate: 0, y: 0 }
+                }
+              />
+            </motion.button>
+          )}
         </div>
       </div>
     </nav>
