@@ -54,7 +54,7 @@ const AboutDetailPage = () => {
         showMenuButton={false}
       />
 
-      <main className="w-full max-w-5xl px-6 md:px-8 py-24 pt-52">
+      <main className="w-full max-w-5xl px-6 md:px-8 py-24 pt-52ㄴ">
         {/* About Me 헤더 섹션 */}
         <div
           id="header"
@@ -96,7 +96,7 @@ const AboutDetailPage = () => {
           >
             <div className="bg-gray-100 dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 p-8 md:p-12 hover:shadow-xl transition-all duration-500 group overflow-hidden relative">
               <h2 className="text-2xl md:text-3xl font-bold mb-6 relative z-10 transition-colors duration-300">
-                그 중에서도 왜 프론트엔드일까요?
+                왜 프론트엔드일까요?
               </h2>
               <div className="space-y-4 text-lg leading-relaxed relative z-10">
                 <p
@@ -343,13 +343,7 @@ const AboutDetailPage = () => {
               },
               {
                 title: "Design & Tools",
-                skills: [
-                  "UI/UX Design",
-                  "Figma",
-                  "Git, GitHub",
-                  "Agile Development",
-                  "Team Collaboration",
-                ],
+                skills: ["Figma", "Git, GitHub"],
                 color: "green",
               },
             ].map((category, categoryIndex) => (
