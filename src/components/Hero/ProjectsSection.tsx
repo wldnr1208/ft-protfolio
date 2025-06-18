@@ -1,8 +1,8 @@
+"use client";
 import React, { useState } from "react";
 import { motion, MotionValue } from "framer-motion";
 import ProjectDetailModal from "./ProjectDetailModal";
 
-// Project 타입 정의 - ProjectDetailModal과 동일하게 업데이트
 export interface Project {
   id: number;
   title: string;
@@ -17,7 +17,6 @@ export interface Project {
   role: string;
 }
 
-// ProjectsSection Props - isDarkMode 추가
 export interface ProjectsSectionProps {
   projectsRef: React.RefObject<HTMLElement | null>;
   projectsY: MotionValue<number>;
@@ -58,8 +57,8 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-5xl md:text-7xl font-black mb-12 text-center"
+            viewport={{ once: false }}
+            className="text-5xl md:text-7xl font-black mb-12 text-center text-gray-900 dark:text-white transition-colors duration-300 text-inherit"
           >
             Featured Projects
           </motion.h2>
@@ -75,7 +74,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   delay: index * 0.2,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: false, margin: "-100px" }}
                 className="group"
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
@@ -102,10 +101,8 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                           }}
                         />
 
-                        {/* 이 오버레이는 클릭을 막을 수 있으니 pointer-events 없애거나 z-index 낮춤 */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0" />
 
-                        {/* 버튼용 오버레이는 유지 */}
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto">
                           <motion.div
                             initial={{ scale: 0 }}
@@ -113,7 +110,6 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                             className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer z-20"
                             onClick={(e) => {
                               e.stopPropagation();
-                              console.log("이미지 클릭됨");
                               handleProjectClick(project);
                             }}
                           >
@@ -132,16 +128,16 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     } space-y-6`}
                   >
                     <div>
-                      <h3 className="text-3xl font-bold mb-2">
+                      <h3 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white transition-colors duration-300 text-inherit">
                         {project.title}
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-400">
+                      <p className="text-base md:text-lg text-gray-700 dark:text-gray-100 transition-colors duration-300 text-inherit">
                         {project.description}
                       </p>
                     </div>
 
                     <div>
-                      <h4 className="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
+                      <h4 className="text-sm font-bold uppercase tracking-wider mb-3 text-gray-800 dark:text-gray-200 transition-colors duration-300 text-inherit">
                         Technologies
                       </h4>
                       <div className="flex flex-wrap gap-2">
@@ -151,7 +147,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                             initial={{ opacity: 0, scale: 0.8 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ delay: i * 0.1 }}
-                            className="px-4 py-2 rounded-full bg-gray-200 dark:bg-gray-800 text-sm font-medium"
+                            className="px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-sm font-medium text-gray-800 dark:text-gray-200 transition-colors duration-300"
                           >
                             {tech}
                           </motion.span>
@@ -160,7 +156,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     </div>
 
                     <div>
-                      <h4 className="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
+                      <h4 className="text-sm font-bold uppercase tracking-wider mb-3 text-gray-800 dark:text-gray-200 transition-colors duration-300 text-inherit">
                         Key Features
                       </h4>
                       <ul className="space-y-2">
@@ -172,8 +168,8 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                             transition={{ delay: i * 0.1 }}
                             className="flex items-center gap-3"
                           >
-                            <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500" />
-                            <span className="text-gray-600 dark:text-gray-300 font-medium">
+                            <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-inherit" />
+                            <span className="font-medium text-gray-700 dark:text-gray-100 transition-colors duration-300 text-inherit">
                               {feature}
                             </span>
                           </motion.li>
@@ -184,10 +180,9 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     <motion.button
                       whileHover={{ x: 10 }}
                       whileTap={{ scale: 0.98 }}
-                      className="group/btn flex items-center gap-2 text-lg font-bold cursor-pointer relative z-10"
+                      className="group/btn flex items-center gap-2 text-lg font-bold cursor-pointer relative z-10 text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-300 text-inherit"
                       onClick={(e) => {
                         e.stopPropagation();
-                        console.log("버튼 클릭됨");
                         handleProjectClick(project);
                       }}
                     >
@@ -208,7 +203,6 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
         </motion.div>
       </section>
 
-      {/* 프로젝트 상세 모달 */}
       <ProjectDetailModal
         project={selectedProject}
         isOpen={isModalOpen}
