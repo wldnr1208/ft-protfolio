@@ -91,7 +91,8 @@ const AboutSection: React.FC = () => {
             className="flex items-center justify-center gap-4"
           >
             <motion.h2
-              className="text-5xl md:text-7xl font-black text-inherit"
+              onClick={() => router.push("/about")} // ✅ 클릭 이벤트 추가
+              className="text-5xl md:text-7xl font-black text-inherit cursor-pointer hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
               variants={wordVariants}
               whileHover={{
                 scale: 1.02,

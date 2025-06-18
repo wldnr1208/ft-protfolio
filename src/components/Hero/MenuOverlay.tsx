@@ -1,7 +1,8 @@
+"use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 
-// MenuOverlay Props
 export interface MenuOverlayProps {
   isMenuOpen: boolean;
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -15,6 +16,8 @@ const MenuOverlay: React.FC<MenuOverlayProps> = ({
   setIsHovering,
   isDarkMode,
 }) => {
+  const router = useRouter(); // ✅ 라우터 사용
+
   const menuVariants = {
     closed: {
       x: "100%",
@@ -58,6 +61,7 @@ const MenuOverlay: React.FC<MenuOverlayProps> = ({
           </button>
 
           <nav className="space-y-6">
+            {/* HOME */}
             <motion.a
               href="#home"
               className={`block text-6xl md:text-7xl font-black ${
@@ -74,6 +78,8 @@ const MenuOverlay: React.FC<MenuOverlayProps> = ({
             >
               HOME
             </motion.a>
+
+            {/* PROJECT */}
             <motion.a
               href="#projects"
               className={`block text-6xl md:text-7xl font-black ${
@@ -90,8 +96,14 @@ const MenuOverlay: React.FC<MenuOverlayProps> = ({
             >
               PROJECT
             </motion.a>
+
+            {/* ABOUT → /about 이동 */}
             <motion.a
-              href="#about"
+              href="#"
+              onClick={() => {
+                setIsMenuOpen(false);
+                router.push("/about");
+              }}
               className={`block text-6xl md:text-7xl font-black ${
                 isDarkMode
                   ? "text-white hover:text-gray-300"
@@ -100,7 +112,6 @@ const MenuOverlay: React.FC<MenuOverlayProps> = ({
               initial={{ x: -100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.3 }}
-              onClick={() => setIsMenuOpen(false)}
               onMouseEnter={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
             >

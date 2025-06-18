@@ -105,7 +105,7 @@ const Portfolio = () => {
       image:
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
       year: "2023",
-      role: "Full Stack Developer",
+      role: "Frontend Developer",
     },
     {
       id: 3,
@@ -125,7 +125,7 @@ const Portfolio = () => {
         "https://lensly.co.kr/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flensly_Og_image.ced781be.jpg&w=1920&q=75",
       link: "https://www.lensly.co.kr/",
       year: "2024",
-      role: "Performance Engineer",
+      role: "Frontend Developer",
     },
     {
       id: 4,
@@ -151,7 +151,7 @@ const Portfolio = () => {
       image:
         "https://wldnr1208.github.io/jw1208.github.io/assets/img/portfolio/app.PNG",
       year: "2023",
-      role: "Lead Developer",
+      role: "Frontend Developer",
     },
   ];
 
