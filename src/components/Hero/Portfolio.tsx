@@ -68,26 +68,27 @@ const Portfolio = () => {
   }, [cursorX, cursorY]);
 
   const projects = [
-    // {
-    //   id: 1,
-    //   title: "Interactive Experience Design",
-    //   description: "Scroll-triggered animations with custom cursor effects",
-    //   longDescription:
-    //     "A comprehensive design system built with modern web technologies. This project showcases advanced scroll-triggered animations, custom cursor effects, and seamless user interactions. Built with performance in mind, it delivers smooth 60fps animations across all devices.",
-    //   tech: ["Framer Motion", "GSAP", "Three.js"],
-    //   features: [
-    //     "Scroll-triggered animations",
-    //     "Responsive scroll animations",
-    //     "Custom cursor effects",
-    //     "Hover & click interactions",
-    //   ],
-    //   gradient: "from-purple-500 to-pink-500",
-    //   image:
-    //     "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&h=600&fit=crop",
-    //   link: "https://example.com/project1",
-    //   year: "2024",
-    //   role: "Lead Developer",
-    // },
+    {
+      id: 1,
+      title: "Netflix 클론 코딩",
+      description: "개인프로젝트 - 최신 기술 스택으로 구현한 스트리밍 플랫폼",
+      longDescription:
+        "Next.js 15와 현대적인 상태관리 도구들을 활용하여 구현한 Netflix 클론 프로젝트입니다. 실제 Netflix와 유사한 사용자 인터페이스와 기능을 제공하며, 반응형 디자인과 최적화된 성능을 통해 원활한 사용자 경험을 구현했습니다. 영화 정보 API 연동과 사용자 상호작용을 중심으로 개발되었습니다.",
+      tech: ["Next.js 15", "Zustand", "React Query", "TypeScript", "TMDB API"],
+      features: [
+        "영화/TV 프로그램 브라우징 및 검색",
+        "반응형 카드 레이아웃 구현",
+        "Zustand를 통한 전역 상태 관리",
+        "React Query로 효율적인 데이터 페칭",
+        "무한 스크롤 및 성능 최적화",
+      ],
+      gradient: "from-red-600 to-red-800",
+      image:
+        "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=800&h=600&fit=crop",
+      link: "https://netflix-seven-mu-59.vercel.app/",
+      year: "2024",
+      role: "Full Stack Developer",
+    },
     {
       id: 2,
       title: "바슈롬 통합 어드민",
