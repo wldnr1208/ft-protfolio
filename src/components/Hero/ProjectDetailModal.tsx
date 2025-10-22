@@ -291,9 +291,199 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
       "앱스토어 정책 대응 및 심사 프로세스 이해도 향상",
     ],
   };
-  const isBauschProject = project.id === 2; // 바슈롬 프로젝트 ID
+
+  // 위즈커넥트 앱 프로젝트 상세 내용
+  const wizconnectAppDetails = {
+    scale:
+      "개발 기간: 2025.06 - 2025.09 (4개월) | 본인 역할: 프론트엔드 엔지니어 | 플랫폼: iOS/Android",
+
+    keyFeatures: [
+      {
+        title: "소셜 로그인 및 본인인증 시스템",
+        details: [
+          "카카오, 네이버, 애플 소셜 로그인 연동",
+          "PG사 본인인증 시스템 통합",
+          "OAuth 2.0 기반 인증 플로우 구현",
+          "토큰 기반 세션 관리 및 자동 갱신",
+        ],
+      },
+      {
+        title: "효율적인 데이터 관리 시스템",
+        details: [
+          "React-Query를 활용한 서버 상태 관리 및 자동 캐싱",
+          "Optimistic Update로 사용자 경험 개선",
+          "Infinite Query를 통한 무한 스크롤 구현",
+          "Zustand를 이용한 클라이언트 전역 상태 관리",
+        ],
+      },
+      {
+        title: "클럽(커뮤니티) 기능",
+        details: [
+          "관심사 기반 클럽 생성 및 가입 시스템",
+          "클럽 멤버 관리 및 권한 설정",
+          "클럽별 피드 및 게시물 관리",
+          "클럽 검색 및 추천 알고리즘 구현",
+        ],
+      },
+      {
+        title: "소셜 피드 시스템",
+        details: [
+          "게시물 작성, 수정, 삭제 기능",
+          "이미지 업로드 및 최적화",
+          "댓글 및 대댓글 시스템",
+          "좋아요 및 북마크 기능",
+          "실시간 피드 업데이트",
+        ],
+      },
+      {
+        title: "푸시 알림 시스템",
+        details: [
+          "Firebase Cloud Messaging (FCM) 연동",
+          "알림 권한 관리 및 설정",
+          "클럽 활동, 댓글, 좋아요 등 다양한 알림 유형 지원",
+          "백그라운드 및 포어그라운드 알림 처리",
+        ],
+      },
+    ],
+
+    achievements: [
+      "소셜 로그인 및 본인인증으로 사용자 인증 편의성 향상",
+      "React-Query 도입으로 API 호출 최적화 및 캐싱 효율 개선",
+      "클럽 기반 커뮤니티 시스템으로 사용자 참여도 증대",
+      "직관적인 UI/UX로 높은 사용자 만족도 달성",
+      "App Store/Google Play 정식 출시 및 운영",
+    ],
+
+    problemSolving: [
+      {
+        title: "성능 최적화",
+        solutions: [
+          "React-Query의 staleTime, cacheTime 설정으로 불필요한 API 호출 감소",
+          "이미지 레이지 로딩 및 압축으로 로딩 속도 개선",
+          "FlatList 가상화로 대량의 피드 렌더링 성능 향상",
+          "메모이제이션을 통한 불필요한 리렌더링 방지",
+        ],
+      },
+      {
+        title: "상태 관리 최적화",
+        solutions: [
+          "React-Query로 서버 상태와 클라이언트 상태 분리",
+          "Zustand의 경량 특성을 활용한 전역 상태 관리",
+          "선택적 리렌더링으로 성능 개선",
+        ],
+      },
+      {
+        title: "사용자 경험 개선",
+        solutions: [
+          "Optimistic Update로 즉각적인 UI 피드백 제공",
+          "로딩 스켈레톤 UI로 체감 대기 시간 감소",
+          "에러 바운더리를 통한 안정적인 에러 처리",
+          "오프라인 모드 대응 및 재연결 로직 구현",
+        ],
+      },
+    ],
+
+    significance: [
+      "소셜 네트워크 서비스의 전반적인 개발 경험",
+      "React-Query를 활용한 서버 상태 관리 실무 경험",
+      "대규모 사용자 대상 앱 개발 및 최적화 경험",
+      "소셜 로그인 및 본인인증 시스템 구현 경험",
+      "실시간 알림 시스템 구현 및 운영 경험",
+    ],
+  };
+
+  // 국립과천과학관 디지털가이드 앱 프로젝트 상세 내용
+  const museumAppDetails = {
+    scale:
+      "개발 기간: 2025.02 - 2025.04 (3개월) | 본인 역할: 프론트엔드 엔지니어 | 플랫폼: iOS/Android",
+
+    keyFeatures: [
+      {
+        title: "비콘 블루투스 통신 시스템",
+        details: [
+          "비콘(Beacon) 블루투스 신호를 이용한 실시간 위치 추적",
+          "전시물 근접 시 자동으로 해당 전시물 정보 표시",
+          "비콘 데이터 수신 및 처리를 위한 커스텀 훅 개발",
+          "블루투스 권한 관리 및 연결 상태 모니터링",
+        ],
+      },
+      {
+        title: "상태 관리 아키텍처",
+        details: [
+          "Redux Toolkit을 활용한 전역 상태 관리 시스템 구축",
+          "비동기 작업(API 호출, 비콘 데이터 처리) 효율적 관리",
+          "zustand를 이용한 다국어(한글/영어) 번역 콘텐츠 상태 관리",
+          "상태 지속성(persistence) 구현으로 사용자 경험 개선",
+        ],
+      },
+      {
+        title: "전시관 내비게이션",
+        details: [
+          "실내 지도 기반 관람객 위치 표시",
+          "전시물별 위치 정보 및 동선 안내",
+          "층별 전시관 구조 시각화",
+          "현재 위치에서 전시물까지의 경로 안내",
+        ],
+      },
+      {
+        title: "콘텐츠 관리 시스템",
+        details: [
+          "전시물별 상세 설명, 이미지, 영상 콘텐츠 제공",
+          "다국어 지원(한국어/영어) 콘텐츠 관리",
+          "오프라인 모드 지원을 위한 로컬 캐싱",
+          "관람 이력 및 즐겨찾기 기능",
+        ],
+      },
+    ],
+
+    achievements: [
+      "비콘 기반 위치 추적 정확도 95% 이상 달성",
+      "Redux Toolkit과 zustand를 활용한 효율적인 상태 관리 구현",
+      "다국어 지원으로 외국인 관람객 편의성 향상",
+      "직관적인 UI/UX로 전 연령층 사용성 확보",
+      "App Store/Google Play 정식 출시 및 운영",
+    ],
+
+    problemSolving: [
+      {
+        title: "비콘 신호 안정성",
+        solutions: [
+          "비콘 신호 강도에 따른 필터링 알고리즘 개발",
+          "다중 비콘 신호 처리 및 우선순위 로직 구현",
+          "신호 끊김 대응을 위한 재연결 메커니즘 구현",
+        ],
+      },
+      {
+        title: "성능 최적화",
+        solutions: [
+          "이미지 및 미디어 콘텐츠 레이지 로딩 적용",
+          "메모이제이션을 통한 불필요한 리렌더링 방지",
+          "비콘 데이터 수신 주기 최적화로 배터리 소모 최소화",
+        ],
+      },
+      {
+        title: "상태 관리 최적화",
+        solutions: [
+          "Redux Toolkit의 createSlice로 보일러플레이트 코드 최소화",
+          "zustand의 경량 특성을 활용한 번역 상태 관리",
+        ],
+      },
+    ],
+
+    significance: [
+      "비콘 블루투스 통신을 활용한 실시간 위치 기반 서비스 개발 경험",
+      "React Native 크로스 플랫폼 앱 개발 실무 경험",
+      "Redux Toolkit과 zustand를 함께 활용한 하이브리드 상태 관리 경험",
+      "공공기관 프로젝트 개발 및 협업 경험",
+      "실제 서비스 출시 및 운영 경험",
+    ],
+  };
+
+  const isWizconnectAppProject = project.id === 1; // 위즈커넥트 앱 프로젝트
+  const isMuseumAppProject = project.id === 2; // 국립과천과학관 디지털가이드 앱 프로젝트
   const isLenslyProject = project.id === 3; // Lensly 프로젝트 ID
-  const isBauschAppProject = project.id === 4; // ✅ 새로 추가한 BAUSCH_APP 프로젝트
+  const isBauschProject = project.id === 4; // 바슈롬 프로젝트 ID
+  const isBauschAppProject = project.id === 5; // BAUSCH_APP 프로젝트
 
   return (
     <AnimatePresence>
@@ -863,7 +1053,313 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                   </motion.div>
                 </>
               )}
-              {!isBauschProject && !isLenslyProject && !isBauschAppProject && (
+
+              {isWizconnectAppProject && (
+                <>
+                  {/* 프로젝트 규모 */}
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                    className="mb-8"
+                  >
+                    <h3 className="text-2xl font-bold mb-4">프로젝트 규모</h3>
+                    <p
+                      className={`text-base ${
+                        isDarkMode ? "text-gray-400" : "text-gray-600"
+                      }`}
+                    >
+                      {wizconnectAppDetails.scale}
+                    </p>
+                  </motion.div>
+
+                  {/* 주요 구현 기능 */}
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                    className="mb-8"
+                  >
+                    <h3 className="text-2xl font-bold mb-6">주요 구현 기능</h3>
+                    <div className="space-y-6">
+                      {wizconnectAppDetails.keyFeatures.map((feature, index) => (
+                        <div key={index}>
+                          <h4
+                            className={`text-lg font-semibold mb-3 ${
+                              isDarkMode ? "text-gray-200" : "text-gray-800"
+                            }`}
+                          >
+                            {feature.title}
+                          </h4>
+                          <ul className="space-y-2 ml-4">
+                            {feature.details.map((detail, idx) => (
+                              <li key={idx} className="flex items-start gap-3">
+                                <span
+                                  className={`w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 bg-gradient-to-r ${project.gradient}`}
+                                />
+                                <span
+                                  className={`${
+                                    isDarkMode
+                                      ? "text-gray-400"
+                                      : "text-gray-600"
+                                  }`}
+                                >
+                                  {detail}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+
+                  {/* 성과 */}
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                    className="mb-8"
+                  >
+                    <h3 className="text-2xl font-bold mb-4">성과</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {wizconnectAppDetails.achievements.map(
+                        (achievement, index) => (
+                          <div
+                            key={index}
+                            className={`p-4 rounded-lg ${
+                              isDarkMode ? "bg-gray-800" : "bg-gray-50"
+                            }`}
+                          >
+                            <span
+                              className={`text-sm ${
+                                isDarkMode ? "text-gray-300" : "text-gray-700"
+                              }`}
+                            >
+                              {index + 1}. {achievement}
+                            </span>
+                          </div>
+                        )
+                      )}
+                    </div>
+                  </motion.div>
+
+                  {/* 문제 해결 */}
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.6 }}
+                    className="mb-8"
+                  >
+                    <h3 className="text-2xl font-bold mb-4">문제 해결</h3>
+                    <div className="space-y-4">
+                      {wizconnectAppDetails.problemSolving.map((problem, index) => (
+                        <div key={index}>
+                          <h4
+                            className={`text-lg font-semibold mb-2 ${
+                              isDarkMode ? "text-gray-200" : "text-gray-800"
+                            }`}
+                          >
+                            {problem.title}
+                          </h4>
+                          <ul className="space-y-1 ml-4">
+                            {problem.solutions.map((solution, idx) => (
+                              <li
+                                key={idx}
+                                className={`text-sm ${
+                                  isDarkMode ? "text-gray-400" : "text-gray-600"
+                                }`}
+                              >
+                                • {solution}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+
+                  {/* 프로젝트 의의 */}
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.7 }}
+                    className="mb-8"
+                  >
+                    <h3 className="text-2xl font-bold mb-4">프로젝트 의의</h3>
+                    <ul className="space-y-2">
+                      {wizconnectAppDetails.significance.map((item, index) => (
+                        <li key={index} className="flex items-start gap-3">
+                          <span
+                            className={`w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 bg-gradient-to-r ${project.gradient}`}
+                          />
+                          <span
+                            className={`${
+                              isDarkMode ? "text-gray-400" : "text-gray-600"
+                            }`}
+                          >
+                            {item}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                </>
+              )}
+
+              {isMuseumAppProject && (
+                <>
+                  {/* 프로젝트 규모 */}
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                    className="mb-8"
+                  >
+                    <h3 className="text-2xl font-bold mb-4">프로젝트 규모</h3>
+                    <p
+                      className={`text-base ${
+                        isDarkMode ? "text-gray-400" : "text-gray-600"
+                      }`}
+                    >
+                      {museumAppDetails.scale}
+                    </p>
+                  </motion.div>
+
+                  {/* 주요 구현 기능 */}
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                    className="mb-8"
+                  >
+                    <h3 className="text-2xl font-bold mb-6">주요 구현 기능</h3>
+                    <div className="space-y-6">
+                      {museumAppDetails.keyFeatures.map((feature, index) => (
+                        <div key={index}>
+                          <h4
+                            className={`text-lg font-semibold mb-3 ${
+                              isDarkMode ? "text-gray-200" : "text-gray-800"
+                            }`}
+                          >
+                            {feature.title}
+                          </h4>
+                          <ul className="space-y-2 ml-4">
+                            {feature.details.map((detail, idx) => (
+                              <li key={idx} className="flex items-start gap-3">
+                                <span
+                                  className={`w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 bg-gradient-to-r ${project.gradient}`}
+                                />
+                                <span
+                                  className={`${
+                                    isDarkMode
+                                      ? "text-gray-400"
+                                      : "text-gray-600"
+                                  }`}
+                                >
+                                  {detail}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+
+                  {/* 성과 */}
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                    className="mb-8"
+                  >
+                    <h3 className="text-2xl font-bold mb-4">성과</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {museumAppDetails.achievements.map(
+                        (achievement, index) => (
+                          <div
+                            key={index}
+                            className={`p-4 rounded-lg ${
+                              isDarkMode ? "bg-gray-800" : "bg-gray-50"
+                            }`}
+                          >
+                            <span
+                              className={`text-sm ${
+                                isDarkMode ? "text-gray-300" : "text-gray-700"
+                              }`}
+                            >
+                              {index + 1}. {achievement}
+                            </span>
+                          </div>
+                        )
+                      )}
+                    </div>
+                  </motion.div>
+
+                  {/* 문제 해결 */}
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.6 }}
+                    className="mb-8"
+                  >
+                    <h3 className="text-2xl font-bold mb-4">문제 해결</h3>
+                    <div className="space-y-4">
+                      {museumAppDetails.problemSolving.map((problem, index) => (
+                        <div key={index}>
+                          <h4
+                            className={`text-lg font-semibold mb-2 ${
+                              isDarkMode ? "text-gray-200" : "text-gray-800"
+                            }`}
+                          >
+                            {problem.title}
+                          </h4>
+                          <ul className="space-y-1 ml-4">
+                            {problem.solutions.map((solution, idx) => (
+                              <li
+                                key={idx}
+                                className={`text-sm ${
+                                  isDarkMode ? "text-gray-400" : "text-gray-600"
+                                }`}
+                              >
+                                • {solution}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+
+                  {/* 프로젝트 의의 */}
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.7 }}
+                    className="mb-8"
+                  >
+                    <h3 className="text-2xl font-bold mb-4">프로젝트 의의</h3>
+                    <ul className="space-y-2">
+                      {museumAppDetails.significance.map((item, index) => (
+                        <li key={index} className="flex items-start gap-3">
+                          <span
+                            className={`w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 bg-gradient-to-r ${project.gradient}`}
+                          />
+                          <span
+                            className={`${
+                              isDarkMode ? "text-gray-400" : "text-gray-600"
+                            }`}
+                          >
+                            {item}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                </>
+              )}
+              {!isBauschProject && !isLenslyProject && !isBauschAppProject && !isMuseumAppProject && !isWizconnectAppProject && (
                 /* 다른 프로젝트의 기본 정보 */
                 <motion.div
                   initial={{ y: 20, opacity: 0 }}
@@ -909,7 +1405,21 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                         : "bg-gray-900 text-white hover:bg-gray-800"
                     }`}
                   >
-                    프로젝트 보기
+                    {project.androidLink ? "iOS 다운로드" : "프로젝트 보기"}
+                  </a>
+                )}
+                {project.androidLink && (
+                  <a
+                    href={project.androidLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`px-6 py-3 rounded-xl font-medium transition-all ${
+                      isDarkMode
+                        ? "bg-white text-black hover:bg-gray-100"
+                        : "bg-gray-900 text-white hover:bg-gray-800"
+                    }`}
+                  >
+                    Android 다운로드
                   </a>
                 )}
                 <button

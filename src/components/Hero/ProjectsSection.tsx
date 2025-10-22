@@ -13,8 +13,10 @@ export interface Project {
   gradient: string;
   image: string;
   link?: string;
+  androidLink?: string;
   year: string;
   role: string;
+  category: "company" | "personal";
 }
 
 export interface ProjectsSectionProps {
@@ -34,6 +36,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 }) => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<"company" | "personal">("company");
 
   const handleProjectClick = (project: Project) => {
     setSelectedProject(project);
@@ -44,6 +47,10 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
     setIsModalOpen(false);
     setTimeout(() => setSelectedProject(null), 300);
   };
+
+  const filteredProjects = projects.filter(
+    (project) => project.category === activeTab
+  );
 
   return (
     <>
@@ -63,8 +70,46 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             Featured Projects
           </motion.h2>
 
+          {/* 탭 메뉴 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: false }}
+            className="flex justify-center gap-4 mb-16"
+          >
+            <button
+              onClick={() => setActiveTab("company")}
+              className={`px-8 py-3 rounded-lg font-semibold text-base transition-all duration-200 ${
+                activeTab === "company"
+                  ? isDarkMode
+                    ? "bg-white text-black"
+                    : "bg-black text-white"
+                  : isDarkMode
+                  ? "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+            >
+              회사 프로젝트
+            </button>
+            <button
+              onClick={() => setActiveTab("personal")}
+              className={`px-8 py-3 rounded-lg font-semibold text-base transition-all duration-200 ${
+                activeTab === "personal"
+                  ? isDarkMode
+                    ? "bg-white text-black"
+                    : "bg-black text-white"
+                  : isDarkMode
+                  ? "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+            >
+              개인 프로젝트
+            </button>
+          </motion.div>
+
           <div className="space-y-20">
-            {projects.map((project, index) => (
+            {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 100 }}
@@ -90,18 +135,20 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                       transition={{ duration: 0.4 }}
                       className={`h-96 rounded-2xl bg-gradient-to-br ${project.gradient} p-1 relative overflow-hidden`}
                     >
-                      <div className="h-full rounded-2xl overflow-hidden relative">
+                      <div className="h-full rounded-2xl overflow-hidden relative bg-white">
                         <img
                           src={project.image}
                           alt={project.title}
-                          className="w-full h-full object-cover cursor-pointer relative z-10"
+                          className={`w-full h-full cursor-pointer relative z-10 ${
+                            project.id === 1 || project.id === 2
+                              ? "object-contain p-8"
+                              : "object-cover"
+                          }`}
                           onClick={(e) => {
                             e.stopPropagation();
                             handleProjectClick(project);
                           }}
                         />
-
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0" />
 
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto">
                           <motion.div

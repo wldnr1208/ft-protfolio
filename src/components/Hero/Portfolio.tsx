@@ -68,45 +68,51 @@ const Portfolio = () => {
   }, [cursorX, cursorY]);
 
   const projects = [
+    // 회사 프로젝트 (최신순)
     {
       id: 1,
-      title: "Netflix 클론 코딩",
-      description: "개인프로젝트 - 최신 기술 스택으로 구현한 스트리밍 플랫폼",
+      title: "위즈커넥트 앱",
+      description: "관심사 기반 커뮤니티 소셜 네트워크 서비스 앱 개발",
       longDescription:
-        "Next.js 15와 현대적인 상태관리 도구들을 활용하여 구현한 Netflix 클론 프로젝트입니다. 실제 Netflix와 유사한 사용자 인터페이스와 기능을 제공하며, 반응형 디자인과 최적화된 성능을 통해 원활한 사용자 경험을 구현했습니다. 영화 정보 API 연동과 사용자 상호작용을 중심으로 개발되었습니다.",
-      tech: ["Next.js 15", "Zustand", "React Query", "TypeScript", "TMDB API"],
+        "위즈커넥트는 관심사 기반의 클럽(커뮤니티)을 통해 사람들이 모이고 소통할 수 있는 소셜 네트워크 서비스 앱입니다. React Native와 Expo를 활용하여 iOS/Android 크로스 플랫폼으로 개발했으며, React-Query를 통한 효율적인 서버 상태 관리와 Zustand를 활용한 클라이언트 상태 관리를 구현했습니다.",
+      tech: ["React Native", "Expo", "TypeScript", "React-Query", "zustand"],
       features: [
-        "영화/TV 프로그램 브라우징 및 검색",
-        "반응형 카드 레이아웃 구현",
-        "Zustand를 통한 전역 상태 관리",
-        "React Query로 효율적인 데이터 페칭",
-        "무한 스크롤 및 성능 최적화",
+        "소셜 로그인 (카카오, 네이버, 애플) 및 본인인증 PG사 연동",
+        "React-Query를 이용한 효율적인 API 연동 및 캐싱",
+        "Zustand를 이용한 전역 상태 관리",
+        "Firebase Cloud Messaging (FCM) 푸시 알림 연동",
+        "클럽(커뮤니티) 생성 및 관리 기능",
+        "피드 작성 및 댓글, 좋아요 기능",
       ],
-      gradient: "from-red-600 to-red-800",
-      image:
-        "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=800&h=600&fit=crop",
-      link: "https://netflix-seven-mu-59.vercel.app/",
-      year: "2024",
-      role: "Full Stack Developer",
+      gradient: "from-purple-500 to-indigo-500",
+      image: "/assets/wizconnect-icon.png",
+      link: "https://apps.apple.com/kr/app/%EC%9C%84%EC%A6%88%EC%BB%A4%EB%84%A5%ED%8A%B8/id6749420482",
+      androidLink: "https://play.google.com/store/apps/details?id=com.wesconnect.wesconnect",
+      year: "2025.06 - 2025.09",
+      role: "Frontend Engineer",
+      category: "company",
     },
     {
       id: 2,
-      title: "바슈롬 통합 어드민",
-      description: "여러 어드민 페이지 통합 어드민으로 구축",
+      title: "국립과천과학관 디지털가이드 앱",
+      description: "비콘 기반 전시관 디지털 가이드 앱 개발",
       longDescription:
-        "바슈롬의 통합 관리 시스템을 구축한 프로젝트입니다. 복잡한 데이터를 직관적으로 관리할 수 있는 대시보드와 실시간 모니터링 시스템을 구현했습니다. 사용자 경험을 최우선으로 고려하여 설계된 인터페이스가 특징입니다.",
-      tech: ["React", "antd", "Redux-saga"],
+        "국립과천과학관의 디지털 가이드 앱을 개발한 프로젝트입니다. 비콘(Beacon) 블루투스 통신을 활용하여 관람객의 위치를 파악하고, 전시물에 대한 자세한 설명과 안내를 제공합니다. React Native로 크로스 플랫폼 개발을 진행했으며, Redux Toolkit과 zustand를 활용한 효율적인 상태 관리 시스템을 구현했습니다.",
+      tech: ["React Native", "Redux Toolkit", "zustand", "Bluetooth Beacon"],
       features: [
-        "실시간 데이터 동기화",
-        "권한 기반 접근 제어",
-        "대시보드 커스터마이징",
-        "자동화된 리포트 생성",
+        "비콘 블루투스 데이터를 이용한 실시간 위치 추적",
+        "전시물별 상세 정보 제공",
+        "비콘 데이터 처리를 위한 커스텀 훅 개발",
+        "Redux Toolkit을 사용한 전역 상태 관리 및 비동기 작업 처리",
+        "zustand를 이용한 영문 번역 콘텐츠 관리",
+        "전시관 실내 지도 및 네비게이션 기능",
       ],
-      gradient: "from-blue-500 to-cyan-500",
-      image:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-      year: "2023",
-      role: "Frontend Developer",
+      gradient: "from-indigo-600 to-purple-600",
+      image: "/assets/gwacheon-museum-logo.png",
+      link: "https://apps.apple.com/kr/app/%EA%B5%AD%EB%A6%BD%EA%B3%BC%EC%B2%9C%EA%B3%BC%ED%95%99%EA%B4%80-%EB%94%94%EC%A7%80%ED%84%B8%EA%B0%80%EC%9D%B4%EB%93%9C/id6744019613",
+      year: "2025.02 - 2025.04",
+      role: "Frontend Engineer",
+      category: "company",
     },
     {
       id: 3,
@@ -127,9 +133,30 @@ const Portfolio = () => {
       link: "https://www.lensly.co.kr/",
       year: "2024",
       role: "Frontend Developer",
+      category: "company",
     },
     {
       id: 4,
+      title: "바슈롬 통합 어드민",
+      description: "여러 어드민 페이지 통합 어드민으로 구축",
+      longDescription:
+        "바슈롬의 통합 관리 시스템을 구축한 프로젝트입니다. 복잡한 데이터를 직관적으로 관리할 수 있는 대시보드와 실시간 모니터링 시스템을 구현했습니다. 사용자 경험을 최우선으로 고려하여 설계된 인터페이스가 특징입니다.",
+      tech: ["React", "antd", "Redux-saga"],
+      features: [
+        "실시간 데이터 동기화",
+        "권한 기반 접근 제어",
+        "대시보드 커스터마이징",
+        "자동화된 리포트 생성",
+      ],
+      gradient: "from-blue-500 to-cyan-500",
+      image:
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+      year: "2023",
+      role: "Frontend Developer",
+      category: "company",
+    },
+    {
+      id: 5,
       title: "BAUSCH 모바일 앱 마이그레이션",
       description: "Expo SDK 마이그레이션 및 앱스토어 대응",
       longDescription:
@@ -153,6 +180,30 @@ const Portfolio = () => {
         "https://wldnr1208.github.io/jw1208.github.io/assets/img/portfolio/app.PNG",
       year: "2023",
       role: "Frontend Developer",
+      category: "company",
+    },
+    // 개인 프로젝트
+    {
+      id: 6,
+      title: "Netflix 클론 코딩",
+      description: "개인프로젝트 - 최신 기술 스택으로 구현한 스트리밍 플랫폼",
+      longDescription:
+        "Next.js 15와 현대적인 상태관리 도구들을 활용하여 구현한 Netflix 클론 프로젝트입니다. 실제 Netflix와 유사한 사용자 인터페이스와 기능을 제공하며, 반응형 디자인과 최적화된 성능을 통해 원활한 사용자 경험을 구현했습니다. 영화 정보 API 연동과 사용자 상호작용을 중심으로 개발되었습니다.",
+      tech: ["Next.js 15", "Zustand", "React Query", "TypeScript", "TMDB API"],
+      features: [
+        "영화/TV 프로그램 브라우징 및 검색",
+        "반응형 카드 레이아웃 구현",
+        "Zustand를 통한 전역 상태 관리",
+        "React Query로 효율적인 데이터 페칭",
+        "무한 스크롤 및 성능 최적화",
+      ],
+      gradient: "from-red-600 to-red-800",
+      image:
+        "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=800&h=600&fit=crop",
+      link: "https://netflix-seven-mu-59.vercel.app/",
+      year: "2024",
+      role: "Full Stack Developer",
+      category: "personal",
     },
   ];
 
