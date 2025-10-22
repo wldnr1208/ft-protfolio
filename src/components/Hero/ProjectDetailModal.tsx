@@ -14,6 +14,7 @@ export interface Project {
   gradient: string;
   image: string;
   link?: string;
+  androidLink?: string;
   year: string;
   role: string;
 }

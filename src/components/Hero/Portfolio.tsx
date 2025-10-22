@@ -15,7 +15,7 @@ import CustomCursor from "./CustomCursor";
 import MenuOverlay from "./MenuOverlay";
 import Navigation from "../Navigation/Navigation";
 import HeroSection from "./HeroSection";
-import ProjectsSection from "./ProjectsSection";
+import ProjectsSection, { Project } from "./ProjectsSection";
 import Footer from "../Footer/Footer";
 import AboutSection from "../AboutSection/AboutSection";
 
@@ -67,7 +67,7 @@ const Portfolio = () => {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [cursorX, cursorY]);
 
-  const projects = [
+  const projects: Project[] = [
     // 회사 프로젝트 (최신순)
     {
       id: 1,
