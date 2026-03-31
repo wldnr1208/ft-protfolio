@@ -71,6 +71,34 @@ const Portfolio = () => {
     // 회사 프로젝트 (최신순)
     {
       id: 1,
+      title: "Fibud Career 플랫폼",
+      description: "피트니스 전문가를 위한 교육·자격증·커리어 통합 플랫폼",
+      longDescription:
+        "Fibud Career는 피트니스 전문가(트레이너)를 위한 교육, 자격증, VOD 학습, 커리어 관리 통합 플랫폼입니다. Turborepo 기반 모노레포 아키텍처로 Expert, Consumer, Center, HR 등 5개 앱을 효율적으로 관리하며, FSD(Feature-Sliced Design) 아키텍처를 적용하여 확장 가능한 구조를 설계했습니다. 교육 탭에서는 자격증·교육·VOD 과정 탐색, 무한 스크롤 기반 필터링, 결제·구독 시스템, 수강 관리 대시보드를 구현했으며, 트레이너 프로필·포트폴리오·리뷰 시스템과 카카오맵 기반 센터 검색 기능도 포함됩니다.",
+      tech: [
+        "Next.js",
+        "TypeScript",
+        "Turborepo",
+        "React Query",
+        "Tailwind CSS",
+        "FSD Architecture",
+      ],
+      features: [
+        "Turborepo 모노레포로 5개 앱(Expert, Consumer, Center, HR, Toss) 통합 관리",
+        "교육 탭: 자격증·교육·VOD 과정 탐색 및 카테고리별 필터링",
+        "무한 스크롤 + 다중 필터(주제, 레벨, 강의유형, 요일, 정렬) 기반 과정 리스트",
+        "수강 관리 대시보드 (구독중/신청완료/수강중/수강완료 상태 관리)",
+        "트레이너 프로필·포트폴리오·리뷰 시스템 구현",
+        "카카오맵 SDK 연동 센터 위치 검색 및 거리 계산",
+      ],
+      gradient: "from-violet-600 to-purple-800",
+      image: "/assets/fibud-career-icon.png",
+      year: "2025.12 - 현재",
+      role: "Frontend Engineer",
+      category: "company",
+    },
+    {
+      id: 2,
       title: "위즈커넥트 앱",
       description: "관심사 기반 커뮤니티 소셜 네트워크 서비스 앱 개발",
       longDescription:
@@ -93,7 +121,7 @@ const Portfolio = () => {
       category: "company",
     },
     {
-      id: 2,
+      id: 3,
       title: "국립과천과학관 디지털가이드 앱",
       description: "비콘 기반 전시관 디지털 가이드 앱 개발",
       longDescription:
@@ -115,7 +143,7 @@ const Portfolio = () => {
       category: "company",
     },
     {
-      id: 3,
+      id: 4,
       title: "lensly 유지보수",
       description: "lensly 퍼블리싱 및 매장리스트 개발",
       longDescription:
@@ -136,7 +164,7 @@ const Portfolio = () => {
       category: "company",
     },
     {
-      id: 4,
+      id: 5,
       title: "바슈롬 통합 어드민",
       description: "여러 어드민 페이지 통합 어드민으로 구축",
       longDescription:
@@ -156,7 +184,7 @@ const Portfolio = () => {
       category: "company",
     },
     {
-      id: 5,
+      id: 6,
       title: "BAUSCH 모바일 앱 마이그레이션",
       description: "Expo SDK 마이그레이션 및 앱스토어 대응",
       longDescription:
@@ -184,7 +212,7 @@ const Portfolio = () => {
     },
     // 개인 프로젝트
     {
-      id: 6,
+      id: 7,
       title: "Netflix 클론 코딩",
       description: "개인프로젝트 - 최신 기술 스택으로 구현한 스트리밍 플랫폼",
       longDescription:

@@ -140,7 +140,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                           src={project.image}
                           alt={project.title}
                           className={`w-full h-full cursor-pointer relative z-10 ${
-                            project.id === 1 || project.id === 2
+                            project.id === 2 || project.id === 3
                               ? "object-contain p-8"
                               : "object-cover"
                           }`}

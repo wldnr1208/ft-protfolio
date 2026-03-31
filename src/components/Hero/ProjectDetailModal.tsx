@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Project 타입 정의 (ProjectsSection과 동일)
@@ -33,6 +33,47 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
   onClose,
   isDarkMode,
 }) => {
+  const printRef = useRef<HTMLDivElement>(null);
+
+  const handlePrintPdf = () => {
+    if (!printRef.current || !project) return;
+    const printContent = printRef.current.innerHTML;
+    const printWindow = window.open("", "_blank");
+    if (!printWindow) return;
+    printWindow.document.write(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>${project.title} - 프로젝트 상세</title>
+        <style>
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1a1a1a; padding: 24px; line-height: 1.5; }
+          h2 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
+          h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; margin-top: 16px; border-bottom: 2px solid #7750E9; padding-bottom: 4px; }
+          h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; margin-top: 10px; color: #333; }
+          p { font-size: 13px; color: #555; margin-bottom: 8px; }
+          ul { list-style: none; padding-left: 0; margin-bottom: 4px; }
+          li { font-size: 12px; color: #555; margin-bottom: 2px; padding-left: 14px; position: relative; line-height: 1.4; }
+          li::before { content: ''; position: absolute; left: 0; top: 6px; width: 5px; height: 5px; border-radius: 50%; background: #7750E9; }
+          .header { background: linear-gradient(135deg, #7c3aed, #6b21a8); color: white; padding: 20px 24px; border-radius: 10px; margin-bottom: 12px; }
+          .header h2 { color: white; }
+          .header .meta { font-size: 13px; opacity: 0.9; margin-top: 4px; }
+          .tech-list { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+          .tech-tag { background: #f3f4f6; padding: 3px 10px; border-radius: 6px; font-size: 12px; font-weight: 500; color: #374151; }
+          .achievement-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+          .achievement-item { background: #f9fafb; padding: 6px 10px; border-radius: 6px; font-size: 12px; color: #374151; }
+          @media print { body { padding: 16px; } .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; } h3 { page-break-after: avoid; } h4 { page-break-after: avoid; } }
+        </style>
+      </head>
+      <body>${printContent}</body>
+      </html>
+    `);
+    printWindow.document.close();
+    printWindow.onload = () => {
+      printWindow.print();
+    };
+  };
+
   // ESC 키로 모달 닫기
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
@@ -293,6 +334,105 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
     ],
   };
 
+  // Fibud Career 프로젝트 상세 내용
+  const fibudDetails = {
+    scale:
+      "개발 기간: 2025.12 - 현재 | 본인 역할: 프론트엔드 엔지니어 | 아키텍처: Turborepo 모노레포 + FSD",
+
+    keyFeatures: [
+      {
+        title: "Turborepo 모노레포 아키텍처 설계",
+        details: [
+          "Expert, Consumer, Center, HR, Toss 5개 앱을 단일 레포에서 관리",
+          "공통 패키지(UI, utils, config)를 packages 디렉토리로 분리하여 코드 재사용",
+          "Turborepo 파이프라인으로 빌드/린트/테스트 병렬 실행 최적화",
+          "앱 간 의존성 관리 및 버전 통합",
+        ],
+      },
+      {
+        title: "교육 탭 시스템 (자격증·교육·VOD)",
+        details: [
+          "홈/자격증/교육/VOD 탭 기반 네비게이션 구현",
+          "주제·레벨·강의유형·요일·정렬 다중 필터 시스템",
+          "React Query의 Infinite Query를 활용한 무한 스크롤 과정 리스트",
+          "과정 상세 페이지: 커리큘럼, 일정, 리뷰, 강사 정보 통합 제공",
+          "구독/단건 결제 시스템 및 Toss Payments 연동",
+        ],
+      },
+      {
+        title: "수강 관리 대시보드 (MyTap)",
+        details: [
+          "구독중/신청완료/결제완료/수강중/수강완료/수강만료 상태 관리",
+          "드래그 기반 카드 슬라이더 컴포넌트 구현",
+          "온라인LIVE/오프라인/하이브리드 강의 유형별 UI 분기",
+          "카카오맵 SDK 연동으로 오프라인 강의 위치 표시",
+        ],
+      },
+      {
+        title: "트레이너 프로필·포트폴리오 시스템",
+        details: [
+          "트레이너 소개, 경력, 자격증, 수상 이력 프로필 페이지",
+          "포트폴리오(임상 데이터) 조회 기능",
+          "친절도/전문성/시간 약속 카테고리별 리뷰 시스템",
+          "위치 기반 트레이너 검색 및 거리 계산",
+          "원포인트/전체 강의 탭 필터링",
+        ],
+      },
+      {
+        title: "FSD(Feature-Sliced Design) 아키텍처",
+        details: [
+          "app/features/entities/widgets/shared 레이어 기반 코드 구조",
+          "도메인별 관심사 분리로 확장성과 유지보수성 확보",
+          "React Query 기반 서버 상태 관리 및 캐싱 전략",
+          "공통 API 클래스 패턴으로 엔드포인트 관리",
+        ],
+      },
+    ],
+
+    achievements: [
+      "5개 앱을 모노레포로 통합하여 코드 재사용성 및 개발 효율성 향상",
+      "교육 플랫폼 전체 프론트엔드 아키텍처 설계 및 구현",
+      "다중 필터 + 무한 스크롤로 사용자 탐색 경험 최적화",
+      "FSD 아키텍처 도입으로 팀 간 코드 일관성 확보",
+      "트레이너-소비자 연결 플랫폼 전체 플로우 구현",
+    ],
+
+    problemSolving: [
+      {
+        title: "모노레포 빌드 최적화",
+        solutions: [
+          "Turborepo 캐싱으로 변경된 앱만 선택적 빌드",
+          "공통 패키지 변경 시 영향받는 앱 자동 감지",
+          "CI/CD 파이프라인에서 병렬 빌드로 배포 시간 단축",
+        ],
+      },
+      {
+        title: "교육 데이터 관리 최적화",
+        solutions: [
+          "React Query의 staleTime/cacheTime 설정으로 불필요한 API 호출 감소",
+          "Infinite Query prefetching으로 스크롤 시 로딩 지연 최소화",
+          "필터 변경 시 쿼리 키 기반 자동 리페칭",
+        ],
+      },
+      {
+        title: "멀티 앱 상태 관리",
+        solutions: [
+          "앱별 독립적인 상태 관리 + 공통 유틸리티 공유",
+          "API 클래스 패턴으로 엔드포인트 중앙 관리",
+          "타입 안전성을 위한 공통 타입 패키지 운영",
+        ],
+      },
+    ],
+
+    significance: [
+      "대규모 모노레포 아키텍처 설계 및 운영 경험",
+      "FSD 아키텍처를 실제 프로덕션 프로젝트에 적용한 경험",
+      "교육 플랫폼 도메인의 복잡한 비즈니스 로직 구현 경험",
+      "멀티 앱 환경에서의 코드 재사용 및 일관성 관리 경험",
+      "결제 시스템 연동 및 구독 모델 구현 경험",
+    ],
+  };
+
   // 위즈커넥트 앱 프로젝트 상세 내용
   const wizconnectAppDetails = {
     scale:
@@ -480,13 +620,15 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
     ],
   };
 
-  const isWizconnectAppProject = project.id === 1; // 위즈커넥트 앱 프로젝트
-  const isMuseumAppProject = project.id === 2; // 국립과천과학관 디지털가이드 앱 프로젝트
-  const isLenslyProject = project.id === 3; // Lensly 프로젝트 ID
-  const isBauschProject = project.id === 4; // 바슈롬 프로젝트 ID
-  const isBauschAppProject = project.id === 5; // BAUSCH_APP 프로젝트
+  const isFibudProject = project.id === 1; // Fibud Career 프로젝트
+  const isWizconnectAppProject = project.id === 2; // 위즈커넥트 앱 프로젝트
+  const isMuseumAppProject = project.id === 3; // 국립과천과학관 디지털가이드 앱 프로젝트
+  const isLenslyProject = project.id === 4; // Lensly 프로젝트 ID
+  const isBauschProject = project.id === 5; // 바슈롬 프로젝트 ID
+  const isBauschAppProject = project.id === 6; // BAUSCH_APP 프로젝트
 
   return (
+    <>
     <AnimatePresence>
       {isOpen && (
         <>
@@ -598,6 +740,108 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                   ))}
                 </div>
               </motion.div>
+
+              {isFibudProject && (
+                <>
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                    className="mb-8"
+                  >
+                    <h3 className="text-2xl font-bold mb-4">프로젝트 규모</h3>
+                    <p className={`text-base ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
+                      {fibudDetails.scale}
+                    </p>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                    className="mb-8"
+                  >
+                    <h3 className="text-2xl font-bold mb-6">주요 구현 기능</h3>
+                    <div className="space-y-6">
+                      {fibudDetails.keyFeatures.map((feature, index) => (
+                        <div key={index}>
+                          <h4 className={`text-lg font-semibold mb-3 ${isDarkMode ? "text-gray-200" : "text-gray-800"}`}>
+                            {feature.title}
+                          </h4>
+                          <ul className="space-y-2 ml-4">
+                            {feature.details.map((detail, idx) => (
+                              <li key={idx} className="flex items-start gap-3">
+                                <span className={`w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 bg-gradient-to-r ${project.gradient}`} />
+                                <span className={`${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>{detail}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                    className="mb-8"
+                  >
+                    <h3 className="text-2xl font-bold mb-4">성과</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {fibudDetails.achievements.map((achievement, index) => (
+                        <div key={index} className={`p-4 rounded-lg ${isDarkMode ? "bg-gray-800" : "bg-gray-50"}`}>
+                          <span className={`text-sm ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>
+                            {index + 1}. {achievement}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.6 }}
+                    className="mb-8"
+                  >
+                    <h3 className="text-2xl font-bold mb-4">문제 해결</h3>
+                    <div className="space-y-4">
+                      {fibudDetails.problemSolving.map((problem, index) => (
+                        <div key={index}>
+                          <h4 className={`text-lg font-semibold mb-2 ${isDarkMode ? "text-gray-200" : "text-gray-800"}`}>
+                            {problem.title}
+                          </h4>
+                          <ul className="space-y-1 ml-4">
+                            {problem.solutions.map((solution, idx) => (
+                              <li key={idx} className={`text-sm ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
+                                • {solution}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.7 }}
+                    className="mb-8"
+                  >
+                    <h3 className="text-2xl font-bold mb-4">프로젝트 의의</h3>
+                    <ul className="space-y-2">
+                      {fibudDetails.significance.map((item, index) => (
+                        <li key={index} className="flex items-start gap-3">
+                          <span className={`w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 bg-gradient-to-r ${project.gradient}`} />
+                          <span className={`${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                </>
+              )}
 
               {isBauschProject && (
                 <>
@@ -1360,7 +1604,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                   </motion.div>
                 </>
               )}
-              {!isBauschProject && !isLenslyProject && !isBauschAppProject && !isMuseumAppProject && !isWizconnectAppProject && (
+              {!isFibudProject && !isBauschProject && !isLenslyProject && !isBauschAppProject && !isMuseumAppProject && !isWizconnectAppProject && (
                 /* 다른 프로젝트의 기본 정보 */
                 <motion.div
                   initial={{ y: 20, opacity: 0 }}
@@ -1424,6 +1668,12 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                   </a>
                 )}
                 <button
+                  onClick={handlePrintPdf}
+                  className={`px-6 py-3 rounded-xl font-medium transition-all bg-gradient-to-r ${project.gradient} text-white hover:opacity-90`}
+                >
+                  PDF 저장
+                </button>
+                <button
                   onClick={onClose}
                   className={`px-6 py-3 rounded-xl font-medium border transition-all ${
                     isDarkMode
@@ -1439,6 +1689,99 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
         </>
       )}
     </AnimatePresence>
+
+    {/* 숨겨진 PDF 출력용 콘텐츠 */}
+    {project && (
+      <div ref={printRef} style={{ position: "absolute", left: "-9999px", top: 0 }}>
+        <div className="header">
+          <h2>{project.title}</h2>
+          <div className="meta">{project.year} | {project.role}</div>
+        </div>
+
+        <h3>프로젝트 소개</h3>
+        <p>{project.longDescription}</p>
+
+        <h3>기술 스택</h3>
+        <div className="tech-list">
+          {project.tech.map((t, i) => (
+            <span key={i} className="tech-tag">{t}</span>
+          ))}
+        </div>
+
+        {(() => {
+          const details = isFibudProject ? fibudDetails
+            : isWizconnectAppProject ? wizconnectAppDetails
+            : isMuseumAppProject ? museumAppDetails
+            : isBauschProject ? bauschDetails
+            : isBauschAppProject ? bauschAppDetails
+            : isLenslyProject ? lenslyDetails
+            : null;
+
+          if (!details) {
+            return (
+              <div className="section">
+                <h3>주요 기능</h3>
+                <ul>
+                  {project.features.map((f, i) => <li key={i}>{f}</li>)}
+                </ul>
+              </div>
+            );
+          }
+
+          return (
+            <>
+              <div className="section">
+                <h3>프로젝트 규모</h3>
+                <p>{details.scale}</p>
+              </div>
+
+              <div className="section">
+                <h3>주요 구현 기능</h3>
+                {("keyFeatures" in details ? details.keyFeatures : "keyTasks" in details ? details.keyTasks : []).map((feature: { title: string; details: string[] }, i: number) => (
+                  <div key={i}>
+                    <h4>{feature.title}</h4>
+                    <ul>
+                      {feature.details.map((d: string, j: number) => <li key={j}>{d}</li>)}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+
+              <div className="section">
+                <h3>성과</h3>
+                <div className="achievement-grid">
+                  {details.achievements.map((a: string, i: number) => (
+                    <div key={i} className="achievement-item">{i + 1}. {a}</div>
+                  ))}
+                </div>
+              </div>
+
+              {"problemSolving" in details && (
+                <div className="section">
+                  <h3>문제 해결</h3>
+                  {details.problemSolving.map((p: { title: string; solutions: string[] }, i: number) => (
+                    <div key={i}>
+                      <h4>{p.title}</h4>
+                      <ul>
+                        {p.solutions.map((s: string, j: number) => <li key={j}>{s}</li>)}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <div className="section">
+                <h3>프로젝트 의의</h3>
+                <ul>
+                  {details.significance.map((s: string, i: number) => <li key={i}>{s}</li>)}
+                </ul>
+              </div>
+            </>
+          );
+        })()}
+      </div>
+    )}
+    </>
   );
 };
 
