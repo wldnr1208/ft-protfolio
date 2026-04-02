@@ -74,14 +74,13 @@ const Portfolio = () => {
       title: "Fibud Career 플랫폼",
       description: "피트니스 전문가를 위한 교육·자격증·커리어 통합 플랫폼",
       longDescription:
-        "Fibud Career는 피트니스 전문가(트레이너)를 위한 교육, 자격증, VOD 학습, 커리어 관리 통합 플랫폼입니다. Turborepo 기반 모노레포 아키텍처로 Expert, Consumer, Center, HR 등 5개 앱을 효율적으로 관리하며, FSD(Feature-Sliced Design) 아키텍처를 적용하여 확장 가능한 구조를 설계했습니다. 교육 탭에서는 자격증·교육·VOD 과정 탐색, 무한 스크롤 기반 필터링, 결제·구독 시스템, 수강 관리 대시보드를 구현했으며, 트레이너 프로필·포트폴리오·리뷰 시스템과 카카오맵 기반 센터 검색 기능도 포함됩니다.",
+        "Fibud Career는 피트니스 전문가(트레이너)를 위한 교육, 자격증, VOD 학습, 커리어 관리 통합 플랫폼입니다. Turborepo 기반 모노레포 아키텍처로 Expert, Consumer, Center, HR 등 5개 앱을 효율적으로 관리하며, 교육 탭에서는 자격증·교육·VOD 과정 탐색, 무한 스크롤 기반 필터링, 결제·구독 시스템, 수강 관리 대시보드를 구현했으며, 트레이너 프로필·포트폴리오·리뷰 시스템과 카카오맵 기반 센터 검색 기능도 포함됩니다.",
       tech: [
         "Next.js",
         "TypeScript",
         "Turborepo",
         "React Query",
         "Tailwind CSS",
-        "FSD Architecture",
       ],
       features: [
         "Turborepo 모노레포로 5개 앱(Expert, Consumer, Center, HR, Toss) 통합 관리",

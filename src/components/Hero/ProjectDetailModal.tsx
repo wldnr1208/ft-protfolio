@@ -337,7 +337,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
   // Fibud Career 프로젝트 상세 내용
   const fibudDetails = {
     scale:
-      "개발 기간: 2025.12 - 현재 | 본인 역할: 프론트엔드 엔지니어 | 아키텍처: Turborepo 모노레포 + FSD",
+      "개발 기간: 2025.12 - 현재 | 본인 역할: 프론트엔드 엔지니어 | 아키텍처: Turborepo 모노레포",
 
     keyFeatures: [
       {
@@ -378,22 +378,12 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           "원포인트/전체 강의 탭 필터링",
         ],
       },
-      {
-        title: "FSD(Feature-Sliced Design) 아키텍처",
-        details: [
-          "app/features/entities/widgets/shared 레이어 기반 코드 구조",
-          "도메인별 관심사 분리로 확장성과 유지보수성 확보",
-          "React Query 기반 서버 상태 관리 및 캐싱 전략",
-          "공통 API 클래스 패턴으로 엔드포인트 관리",
-        ],
-      },
     ],
 
     achievements: [
       "5개 앱을 모노레포로 통합하여 코드 재사용성 및 개발 효율성 향상",
       "교육 플랫폼 전체 프론트엔드 아키텍처 설계 및 구현",
       "다중 필터 + 무한 스크롤로 사용자 탐색 경험 최적화",
-      "FSD 아키텍처 도입으로 팀 간 코드 일관성 확보",
       "트레이너-소비자 연결 플랫폼 전체 플로우 구현",
     ],
 
@@ -403,7 +393,6 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
         solutions: [
           "Turborepo 캐싱으로 변경된 앱만 선택적 빌드",
           "공통 패키지 변경 시 영향받는 앱 자동 감지",
-          "CI/CD 파이프라인에서 병렬 빌드로 배포 시간 단축",
         ],
       },
       {
@@ -426,7 +415,6 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 
     significance: [
       "대규모 모노레포 아키텍처 설계 및 운영 경험",
-      "FSD 아키텍처를 실제 프로덕션 프로젝트에 적용한 경험",
       "교육 플랫폼 도메인의 복잡한 비즈니스 로직 구현 경험",
       "멀티 앱 환경에서의 코드 재사용 및 일관성 관리 경험",
       "결제 시스템 연동 및 구독 모델 구현 경험",
